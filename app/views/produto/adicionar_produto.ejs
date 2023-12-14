@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <%- include('../../public/menuAdmin.html') %>
+
+    <h1> Catálogo de Produtos </h1>
+
+    <% if (erros) { %>
+        <ul>
+            <% for (let i = 0; i < erros.length; i++) { %>
+                <li><%= erros[i].msg %></li>
+            <% } %>
+        </ul>
+   <% } %>
+      
+    <form action="/produto/adicionar" method="post">
+        <label>Descrição</label>
+        <br>
+        <input type="text" value="<%= produto.descricao %>" name="descricao" id="descricao">      
+        <br>
+        <label>Preço</label>
+        <br>
+        <input type="text" value="<%= produto.preco %>" name="preco" id="preco">           
+        <br><br>
+        <input type="submit" value="Adicionar">    
+    </form>
+</body>
+</html>

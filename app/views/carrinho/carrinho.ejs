@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <%- include('../../public/menu.html') %>
+
+    <h1>Carrinho</h1>
+
+    <% if (erros) { %>
+        <ul>
+            <% for (let i = 0; i < erros.length; i++) { %>
+                <li><%= erros[i].msg %></li>
+            <% } %>
+        </ul>
+    <% } %>
+
+    <table>
+        <tr>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th></th>
+        </tr>
+        <% produtos.forEach(produto => { %>
+            <tr>
+                <td><%= produto.descricao %></td>
+                <td><%= produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %></td>
+                <td><%= produto.quantidade %></td>
+                <td>
+                    <a href="/alterar-quantidade/<%= produto.id %>">Alterar quantidade</a>
+                    <a href="/excluir/<%= produto.id %>">Excluir</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+    <h3>Valor total: <%= valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %></h3>
+    <a href="/finalizar-pedido">Finalizar Pedido</a>
+</body>
+</html>

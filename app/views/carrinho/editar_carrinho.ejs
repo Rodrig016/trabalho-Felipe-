@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>editar_carrinho</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+    <%- include('../../public/menuAdmin.html') %>
+    <h1>Editar Produtos</h1>
+
+    <form action="/carrinho/salvar/<%= produto[0].id %>" method="post">
+        <label>Descrição</label>
+        <br>
+        <input type="text" name="descricao" id="descricao" value="<%= produto[0].descricao%>">
+        <br>
+        <label>Preço</label>
+        <br>
+        <input type="text" name="preco" id="preco" value="<%= produto[0].preco%>">
+        <br><br>      
+        <input type="submit" value="Salvar">
+        <br><br> 
+    </form>
+</body>
+</html>
